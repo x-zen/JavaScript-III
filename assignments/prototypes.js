@@ -64,6 +64,9 @@ Object.create(CharacterStats.prototype);
 Humanoid.prototype.greet = function () {
  return `${this.name} offers a greeting in ${this.language}.`;};
 
+ Humanoid.prototype.taunt = function () {
+  return `${this.name} yells a taunt in ${this.language}.`;};
+
 
 /*
   * Inheritance chain: GameObject -> CharacterStats -> Humanoid
@@ -140,3 +143,41 @@ Humanoid.prototype.greet = function () {
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+  const hero = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+      length: 2,
+      width: 2,
+      height: 2,
+    },
+    healthPoints: 20,
+    name: "Captin' Code",
+    team: 'The Heros Delegation',
+    weapons: [
+      'Super Punch',
+      'Shield',
+    ],
+    language: 'Common Tongue',
+  });
+
+  const villan = new Humanoid({
+    createdAt: new Date(),
+    dimensions: {
+      length: 2,
+      width: 2,
+      height: 2,
+    },
+    healthPoints: 15,
+    name: "Error 404",
+    team: 'The Heros Delegation',
+    weapons: [
+      'Self Destruction',
+      'Rifle',
+    ],
+    language: 'Binary',
+  });
+
+  console.log(villan.taunt());
+  console.log(hero.takeDamage());
+  console.log(villan.destroy());
